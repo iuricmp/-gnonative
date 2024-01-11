@@ -11,11 +11,11 @@ npm install @gnonative/react-native
 ## Usage
 
 ```js
-import { multiply } from '@gnonative/react-native';
+import { useGno } from '@gnonative/react-native';
 
-// ...
-
-const result = await multiply(3, 7);
+gno.render("gno.land/r/demo/boards", "gnonative/1")
+    .then((res) => console.log(res))
+    .catch((err) => console.log(err));
 ```
 
 ## Contributing
