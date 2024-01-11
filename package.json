@@ -1,6 +1,6 @@
 {
   "name": "@gnonative/react-native",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Gno Blockchain integration for React Native apps.",
   "main": "lib/commonjs/index",
   "module": "lib/module/index",
