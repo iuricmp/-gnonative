@@ -6,6 +6,8 @@ import type {
 } from '@bufbuild/protobuf';
 
 import type {
+  ContextKey,
+  ContextValues,
   StreamResponse,
   Transport,
   UnaryRequest,
@@ -98,7 +100,6 @@ export function createXHRGrpcWebTransport(
         options.jsonOptions,
         options.binaryOptions
       );
-  // tslint:disable
       return await runUnaryCall<I, O>({
         signal,
         interceptors: options.interceptors,
@@ -111,8 +112,19 @@ export function createXHRGrpcWebTransport(
             method: 'POST',
             mode: 'cors',
           },
-          header: webRequestHeader(useBinaryFormat, timeoutMs, header),
+          header: webRequestHeader(useBinaryFormat, timeoutMs, header, false),
           message,
+          contextValues: {
+            get: function <T>(): T {
+              throw new Error('Function not implemented.');
+            },
+            set: function <T>(_key: ContextKey<T>): ContextValues {
+              throw new Error('Function not implemented.');
+            },
+            delete: function (): ContextValues {
+              throw new Error('Function not implemented.');
+            },
+          }, // Add the missing contextValues property
         },
         next: async (req: UnaryRequest<I, O>): Promise<UnaryResponse<I, O>> => {
           function fetchXHR(): Promise<FetchXHRResponse> {
@@ -160,7 +172,7 @@ export function createXHRGrpcWebTransport(
 
           webValidateResponse(response.status, response.headers);
 
-          const chunks = extractDataChunks(response.body);
+          const chunks = extractDataChunks(response['body']);
 
           let trailer: Headers | undefined;
           let message: O | undefined;
@@ -189,7 +201,7 @@ export function createXHRGrpcWebTransport(
             throw 'missing trailer';
           }
 
-          validateTrailer(trailer);
+          validateTrailer(trailer, undefined);
 
           if (message === undefined) {
             throw 'missing message';
@@ -213,7 +225,7 @@ export function createXHRGrpcWebTransport(
       method: MethodInfo<I, O>,
       signal: AbortSignal | undefined,
       timeoutMs: number | undefined,
-      header: HeadersInit | undefined,
+      header: any | undefined,
       input: AsyncIterable<PartialMessage<I>>
     ): Promise<StreamResponse<I, O>> {
       const { serialize, parse } = createClientMethodSerializers(
@@ -223,10 +235,7 @@ export function createXHRGrpcWebTransport(
         options.binaryOptions
       );
 
-      async function* parseResponseBody(
-        body: ReadableStream<Uint8Array>,
-        trailerTarget: Headers
-      ) {
+      async function* parseResponseBody(body: any, trailerTarget: Headers) {
         const reader = createEnvelopeReadableStream(body).getReader();
         let endStreamReceived = false;
 
@@ -292,9 +301,21 @@ export function createXHRGrpcWebTransport(
             method.kind,
             useBinaryFormat,
             timeoutMs,
-            header
+            header,
+            undefined
           ),
           message: input,
+          contextValues: {
+            get: function <T>(_key: ContextKey<T>): T {
+              throw new Error('Function not implemented.');
+            },
+            set: function <T>(_key: ContextKey<T>, _value: T): ContextValues {
+              throw new Error('Function not implemented.');
+            },
+            delete: function (_key: ContextKey<unknown>): ContextValues {
+              throw new Error('Function not implemented.');
+            },
+          },
         },
         next: async (req) => {
           const fetch = options.fetch ?? globalThis.fetch;
@@ -303,11 +324,11 @@ export function createXHRGrpcWebTransport(
             headers: req.header,
             signal: req.signal,
             body: await createRequestBody(req.message),
-            reactNative: { textStreaming: true }, // allows streaming in the polyfill fetch function
+            // reactNative: { textStreaming: true }, // allows streaming in the polyfill fetch function
           });
 
           validateResponse(method.kind, fRes.status, fRes.headers);
-          if (fRes.body === null) {
+          if (fRes['body'] === null) {
             throw 'missing response body';
           }
 
@@ -318,7 +339,7 @@ export function createXHRGrpcWebTransport(
           const generator = {
             async *[Symbol.asyncIterator]() {
               // tslint:disable-next-line
-              yield* parseResponseBody(fRes.body, trailer);
+              yield* parseResponseBody(fRes['body'], trailer);
             },
           };
 
