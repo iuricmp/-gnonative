@@ -1676,6 +1676,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@bufbuild/protobuf@npm:^1.6.0":
+  version: 1.6.0
+  resolution: "@bufbuild/protobuf@npm:1.6.0"
+  checksum: ab4f9a5628d9be819a2317b792a4619203c3862b61f30ad20a83b6da3dd1f823c4b728ed650999d79b486da0c627a27d39981608d906c709dd40976ccd312267
+  languageName: node
+  linkType: hard
+
 "@commitlint/cli@npm:^17.8.1":
   version: 17.8.1
   resolution: "@commitlint/cli@npm:17.8.1"
@@ -1873,6 +1880,25 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@connectrpc/connect-web@npm:^1.3.0":
+  version: 1.3.0
+  resolution: "@connectrpc/connect-web@npm:1.3.0"
+  peerDependencies:
+    "@bufbuild/protobuf": ^1.4.2
+    "@connectrpc/connect": 1.3.0
+  checksum: 085dcf01cfe652849dd5c046acdeb9baa578add4a58d35643c162e8eccd5203021451b49bfb3d66c69d1e65759ef25727b6b64ee62ea017a040097c3535d214a
+  languageName: node
+  linkType: hard
+
+"@connectrpc/connect@npm:^1.3.0":
+  version: 1.3.0
+  resolution: "@connectrpc/connect@npm:1.3.0"
+  peerDependencies:
+    "@bufbuild/protobuf": ^1.4.2
+  checksum: a68bfffedd817a7db3563c00e5efc5eb510cc00a93c722d81fa1f52b71a96300d7175b0c0710a9d2ef2e8aaabee36921c90470a80343e7a9fbccffd3cc83f868
+  languageName: node
+  linkType: hard
+
 "@cspotcode/source-map-support@npm:^0.8.0":
   version: 0.8.1
   resolution: "@cspotcode/source-map-support@npm:0.8.1"
@@ -1955,13 +1981,17 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@gnonative/react-native@workspace:."
   dependencies:
+    "@bufbuild/protobuf": ^1.6.0
     "@commitlint/config-conventional": ^17.0.2
+    "@connectrpc/connect": ^1.3.0
+    "@connectrpc/connect-web": ^1.3.0
     "@evilmartians/lefthook": ^1.5.0
     "@react-native/eslint-config": ^0.72.2
     "@release-it/conventional-changelog": ^5.0.0
     "@types/jest": ^28.1.2
     "@types/react": ~17.0.21
     "@types/react-native": 0.70.0
+    base-64: ^1.0.0
     commitlint: ^17.0.2
     del-cli: ^5.0.0
     eslint: ^8.4.1
@@ -1973,9 +2003,15 @@ __metadata:
     react: 18.2.0
     react-native: 0.73.2
     react-native-builder-bob: ^0.20.0
+    react-native-fetch-api: ^3.0.0
+    react-native-get-random-values: ^1.10.0
+    react-native-polyfill-globals: ^3.1.0
+    react-native-url-polyfill: ^2.0.0
     release-it: ^15.0.0
+    text-encoding: ^0.7.0
     turbo: ^1.10.7
     typescript: ^5.0.2
+    web-streams-polyfill: ^3.3.2
   peerDependencies:
     react: "*"
     react-native: "*"
@@ -4134,6 +4170,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"base-64@npm:^1.0.0":
+  version: 1.0.0
+  resolution: "base-64@npm:1.0.0"
+  checksum: d10b64a1fc9b2c5a5f39f1ce1e6c9d1c5b249222bbfa3a0604c592d90623caf74419983feadd8a170f27dc0c3389704f72faafa3e645aeb56bfc030c93ff074a
+  languageName: node
+  linkType: hard
+
 "base64-js@npm:^1.3.1, base64-js@npm:^1.5.1":
   version: 1.5.1
   resolution: "base64-js@npm:1.5.1"
@@ -4267,7 +4310,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"buffer@npm:^5.5.0":
+"buffer@npm:^5.4.3, buffer@npm:^5.5.0":
   version: 5.7.1
   resolution: "buffer@npm:5.7.1"
   dependencies:
@@ -6225,6 +6268,13 @@ __metadata:
     iconv-lite: ^0.4.24
     tmp: ^0.0.33
   checksum: 1c2a616a73f1b3435ce04030261bed0e22d4737e14b090bb48e58865da92529c9f2b05b893de650738d55e692d071819b45e1669259b2b354bc3154d27a698c7
+  languageName: node
+  linkType: hard
+
+"fast-base64-decode@npm:^1.0.0":
+  version: 1.0.0
+  resolution: "fast-base64-decode@npm:1.0.0"
+  checksum: 4c59eb1775a7f132333f296c5082476fdcc8f58d023c42ed6d378d2e2da4c328c7a71562f271181a725dd17cdaa8f2805346cc330cdbad3b8e4b9751508bd0a3
   languageName: node
   linkType: hard
 
@@ -10203,6 +10253,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"p-defer@npm:^3.0.0":
+  version: 3.0.0
+  resolution: "p-defer@npm:3.0.0"
+  checksum: ac3b0976a1c76b67cca1a34e00f7299b0cc230891f820749686aa84f8947326bbe0f8e3b7d9ca511578ee06f0c1a6e0ff68c8e9c325eac455f09d99f91697161
+  languageName: node
+  linkType: hard
+
 "p-limit@npm:^1.1.0":
   version: 1.3.0
   resolution: "p-limit@npm:1.3.0"
@@ -10720,7 +10777,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"punycode@npm:^2.1.0":
+"punycode@npm:^2.1.0, punycode@npm:^2.1.1":
   version: 2.3.1
   resolution: "punycode@npm:2.3.1"
   checksum: bb0a0ceedca4c3c57a9b981b90601579058903c62be23c5e8e843d2c2d4148a3ecf029d5133486fb0e1822b098ba8bba09e89d6b21742d02fa26bda6441a6fb2
@@ -10855,6 +10912,51 @@ __metadata:
   bin:
     bob: bin/bob
   checksum: 258da6ecd03be52cc05a3e3a7c481890c7c0b7b62ae9f263c5f3d6fafeae95bd9445ad2f6c2513f7f4e4569eee935a18ae94c7491f58d6916af515c88de9e0a1
+  languageName: node
+  linkType: hard
+
+"react-native-fetch-api@npm:^3.0.0":
+  version: 3.0.0
+  resolution: "react-native-fetch-api@npm:3.0.0"
+  dependencies:
+    p-defer: ^3.0.0
+  checksum: f10f435060551c470711ba0b3663e3d49c7701aae84ea645d66992d756b13e923fb5762b324d3583d85c1c0def4138b9cc3f686bab1c1bc10d3ad82dc7175c99
+  languageName: node
+  linkType: hard
+
+"react-native-get-random-values@npm:^1.10.0":
+  version: 1.10.0
+  resolution: "react-native-get-random-values@npm:1.10.0"
+  dependencies:
+    fast-base64-decode: ^1.0.0
+  peerDependencies:
+    react-native: ">=0.56"
+  checksum: 7100682d5096d8b0e208b2698c3a21221b0e26fe181202f09cc9b481a22b01b4d3baf23db313397e673fd244ba0a870e457e0292ef22ce380147c15b6718f0a9
+  languageName: node
+  linkType: hard
+
+"react-native-polyfill-globals@npm:^3.1.0":
+  version: 3.1.0
+  resolution: "react-native-polyfill-globals@npm:3.1.0"
+  peerDependencies:
+    base-64: "*"
+    react-native-fetch-api: "*"
+    react-native-get-random-values: "*"
+    react-native-url-polyfill: "*"
+    text-encoding: "*"
+    web-streams-polyfill: "*"
+  checksum: ff968f257a10c420c96fb1b5e838bf665f5312b9709ff23001fd57480a05991df6d0f8751a2f46250174f858dcc3ebfdaf5548c9f37b729d472d3152b99e3356
+  languageName: node
+  linkType: hard
+
+"react-native-url-polyfill@npm:^2.0.0":
+  version: 2.0.0
+  resolution: "react-native-url-polyfill@npm:2.0.0"
+  dependencies:
+    whatwg-url-without-unicode: 8.0.0-3
+  peerDependencies:
+    react-native: "*"
+  checksum: 1a2e1030a62fd093764b5330ce0ff34d72246e581dd2892cddc347d8621931aeb2c9ea3e054960484a1259230e8461e569e1890f1ff452d3c5c0adef70190fc3
   languageName: node
   linkType: hard
 
@@ -12262,6 +12364,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"text-encoding@npm:^0.7.0":
+  version: 0.7.0
+  resolution: "text-encoding@npm:0.7.0"
+  checksum: b6109a843fb1b8748b32e1ecd6df74d370f46c13ac136bcb6ca15db70209bb0b8ec1f296ebb4b0dd9961150e205dcc044b89f8cf7657f6faef78c7569a2a81bc
+  languageName: node
+  linkType: hard
+
 "text-extensions@npm:^1.0.0":
   version: 1.9.0
   resolution: "text-extensions@npm:1.9.0"
@@ -12940,7 +13049,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"web-streams-polyfill@npm:^3.0.3":
+"web-streams-polyfill@npm:^3.0.3, web-streams-polyfill@npm:^3.3.2":
   version: 3.3.2
   resolution: "web-streams-polyfill@npm:3.3.2"
   checksum: 0292f4113c1bda40d8e8ecebee39eb14cc2e2e560a65a6867980e394537a2645130e2c73f5ef6e641fd3697d2f71720ccf659aebaf69a9d5a773f653a0fdf39d
@@ -12954,10 +13063,28 @@ __metadata:
   languageName: node
   linkType: hard
 
+"webidl-conversions@npm:^5.0.0":
+  version: 5.0.0
+  resolution: "webidl-conversions@npm:5.0.0"
+  checksum: ccf1ec2ca7c0b5671e5440ace4a66806ae09c49016ab821481bec0c05b1b82695082dc0a27d1fe9d804d475a408ba0c691e6803fd21be608e710955d4589cd69
+  languageName: node
+  linkType: hard
+
 "whatwg-fetch@npm:^3.0.0":
   version: 3.6.20
   resolution: "whatwg-fetch@npm:3.6.20"
   checksum: c58851ea2c4efe5c2235f13450f426824cf0253c1d45da28f45900290ae602a20aff2ab43346f16ec58917d5562e159cd691efa368354b2e82918c2146a519c5
+  languageName: node
+  linkType: hard
+
+"whatwg-url-without-unicode@npm:8.0.0-3":
+  version: 8.0.0-3
+  resolution: "whatwg-url-without-unicode@npm:8.0.0-3"
+  dependencies:
+    buffer: ^5.4.3
+    punycode: ^2.1.1
+    webidl-conversions: ^5.0.0
+  checksum: 1fe266f7161e0bd961087c1254a5a59d1138c3d402064495eed65e7590d9caed5a1d9acfd6e7a1b0bf0431253b0e637ee3e4ffc08387cd60e0b2ddb9d4687a4b
   languageName: node
   linkType: hard
 

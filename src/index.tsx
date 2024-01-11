@@ -1,4 +1,5 @@
 import { NativeModules, Platform } from 'react-native';
+import { useGno } from './hooks/use-gno';
 
 const LINKING_ERROR =
   `The package '@gnonative/react-native' doesn't seem to be linked. Make sure: \n\n` +
@@ -20,3 +21,5 @@ const ReactNative = NativeModules.ReactNative
 export function multiply(a: number, b: number): Promise<number> {
   return ReactNative.multiply(a, b);
 }
+
+export { useGno };
